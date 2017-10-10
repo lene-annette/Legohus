@@ -22,13 +22,13 @@ public class Order {
     public Order() {
     }
 
-    public Order(int id, int length, int width, int height, String orderDate, String dispatchDate, int userId) {
-        this.id = id;
+    public Order(int length, int width, int height, String orderDate, int userId) {
+        this.id = -1;
         this.length = length;
         this.width = width;
         this.height = height;
         this.orderDate = orderDate;
-        this.dispatchDate = dispatchDate;
+        this.dispatchDate = null;
         this.userId = userId;
     }
 
