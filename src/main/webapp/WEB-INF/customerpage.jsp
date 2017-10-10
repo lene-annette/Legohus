@@ -4,14 +4,17 @@
     Author     : lene_
 --%>
 
+<%@page import="Function.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Customer page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%User user = (User) session.getAttribute("user");%>
+        <h1>Hello <%=user.getName()%></h1>
+        You are now logged in as a customer!
     </body>
 </html>

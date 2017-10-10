@@ -4,6 +4,7 @@
     Author     : lene_
 --%>
 
+<%@page import="Function.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,7 +12,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <body>
-        <h1>Hello World!</h1>
+     <body>
+        <%User user = (User) session.getAttribute("user");%>
+        <h1>Hello <%=user.getName()%></h1>
+        You are now logged in as an employee!
     </body>
 </html>
