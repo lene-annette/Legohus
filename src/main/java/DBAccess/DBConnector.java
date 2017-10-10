@@ -14,15 +14,18 @@ import java.sql.SQLException;
  * @author lene_
  */
 public class DBConnector {
-    private static String url = "jdbc:mysql://207.154.247.212:3306/legohus";
-    private static String username = "lsko";
-
-    private static String password = "LeneSkov";
+    private static final String url = "jdbc:mysql://207.154.247.212:3306/legohus";
+    private static final String username = "lsko";
+    private static final String password = "LeneSkov";
+    
+    private static Connection singleton;
 
     public static Connection connection() throws ClassNotFoundException, SQLException {
-        
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection connection = DriverManager.getConnection(url, username, password);
-        return connection;
+        if(singleton == null){
+            Class.forName("com.mysql.jdbc.Driver");
+            singleton = DriverManager.getConnection(url, username, password);
+            
+        }
+        return singleton;
     }
 }
