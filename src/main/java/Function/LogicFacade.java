@@ -5,18 +5,22 @@
  */
 package Function;
 
+import DBAccess.UserMapper;
+
 /**
  *
  * @author lene_
  */
 public class LogicFacade {
 
-    public static User login(String email, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static User login(String email, String password) throws LegohusException {
+        return UserMapper.login(email,password);
     }
 
-    public static User createUser(String name, String email, String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static User createUser(String name, String email, String password) throws LegohusException {
+        User user = new User(name,email,password,"customer");
+        UserMapper.createUser(user);
+        return user;
     }
     
 }

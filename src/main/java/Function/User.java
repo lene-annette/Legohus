@@ -10,23 +10,22 @@ package Function;
  * @author lene_
  */
 public class User {
-    
-    public enum Type{
-        USER, EMPLOYEE
-    }
+  
     
     private int id;
-    private String email;
     private String name;
-    private Type type;
+    private String email;
+    private String password;
+    private String type;
 
     public User() {
     }
 
-    public User(int id, String email, String name, Type type) {
-        this.id = id;
-        this.email = email;
+    public User(String name, String email, String password, String type) {
+        this.id = -1;
         this.name = name;
+        this.email = email;
+        this.password = password;
         this.type = type;
     }
 
@@ -54,17 +53,28 @@ public class User {
         this.name = name;
     }
 
-    public Type getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(Type type) {
+    public void setType(String type) {
         this.type = type;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", email=" + email + ", name=" + name + ", type=" + type + '}';
+        return "User{" + "id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", type=" + type + '}';
     }
+    
+
+   
  
 }
