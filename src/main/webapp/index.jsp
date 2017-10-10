@@ -17,10 +17,10 @@
                 <h2>Login</h2> <br>
                 <input type="hidden" name="command" value="login">
                 Email:<br>
-                <input type="text" name="email" value="some@email.com">
+                <input type="text" name="email" value="lene@mail.dk"> 
                 <br>
                 password:<br>
-                <input type="password" name="password" value="password">
+                <input type="password" name="password" value="1234">
                 <br>
                 <input type="submit" value="Login">
             </form>
@@ -30,21 +30,27 @@
             <form name="register" action="FrontController" method="POST">
                 <input type="hidden" name="command" value="register">
                 Name:<br>
-                <input type="text" name="name" value="John Doe">
+                <input type="text" name="name" >
                 <br>
                 Email:<br>
-                <input type="text" name="email" value="some@email.com">
+                <input type="text" name="email" >
                 <br>
                 Password:<br>
-                <input type="password" name="password1" value="password">
+                <input type="password" name="password1" >
                 <br>
                 Retype Password:<br>
-                <input type="password" name="password2" value="password">
+                <input type="password" name="password2" >
                 <br>
                 <input type="submit" value="Register">
                 
             </form>
             
         </div>
+        <% String error = (String) request.getAttribute( "error");
+           if ( error != null) { %>
+           <H2>Error!!</h2>
+           <p><%= error %>
+        <% }
+        %>
     </body>
 </html>

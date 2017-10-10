@@ -41,16 +41,16 @@ public class UserMapper {
     public static User login(String email, String password) throws LegohusException {
        try{
            Connection con = DBConnector.connection();
-           String SQL = "SELECT u_id, u_type FROM user "
+           String SQL = "SELECT u_id, u_name, u_type FROM users "
                    + "WHERE email=? AND password=?";
            PreparedStatement ps = con.prepareStatement(SQL);
            ps.setString(1, email);
            ps.setString(2, password);
            ResultSet rs = ps.executeQuery();
            if(rs.next()){
-               String type = rs.getString("u_type");
                int id = rs.getInt("u_id");
                String name = rs.getString("u_name");
+               String type = rs.getString("u_type");
                User user = new User(name, email, password, type);
                user.setId(id);
                return user;                       
