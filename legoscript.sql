@@ -30,4 +30,5 @@ insert into `users` (`email`,`u_name`,`password`,`u_type`) values ('john@gmail.c
 
 select * from `users`;
 
+select u_id, u_name, u_type from users where email='lene@mail.dk' and password='1234';
 
