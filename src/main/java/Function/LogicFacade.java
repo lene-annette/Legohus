@@ -5,7 +5,9 @@
  */
 package Function;
 
+import DBAccess.OrderMapper;
 import DBAccess.UserMapper;
+import java.util.List;
 
 /**
  *
@@ -21,6 +23,17 @@ public class LogicFacade {
         User user = new User(name,email,password,"customer");
         UserMapper.createUser(user);
         return user;
+    }
+    
+    //kunderkrav 2: Kunne se tidligere ordre:
+    public static List<Order> getAllOrdersById(int userId) throws LegohusException {
+        return OrderMapper.getAllOrdersByUserId(userId);
+    }
+    
+    public static void createOrder(int length, int width, int height, int userId) throws LegohusException{
+        Order order = new Order(length, width, height, "2017-10-12", userId);
+        OrderMapper.createOrder(order);
+        
     }
     
 }

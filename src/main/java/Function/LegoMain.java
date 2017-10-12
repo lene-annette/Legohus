@@ -34,14 +34,8 @@ public class LegoMain {
         UserMapper um = new UserMapper();
         OrderMapper om = new OrderMapper();
         try{
-            
-            User user = um.login("john@gmail.com","password");
-//            List<Order> orders = om.getAllOrdersByUserId(3);
-              List<Order> orders = om.getAllOrders();
-            
-            for(Order order : orders){
-                System.out.println(order);
-            }
+            Order order = om.getOrder(1);
+            System.out.println(order);
         }catch(LegohusException ex){
             System.out.println("message: " + ex.getMessage() );
         }
