@@ -32,20 +32,11 @@ public class PlaceOrder extends Command {
         User user = (User)session.getAttribute("user");
         
         LogicFacade.createOrder(length, width, height, user.getId());
-        List<Integer> noOfBricks = makeList(request,response,length,width,height);
-        request.setAttribute("bricks", noOfBricks);
+        Bricks bricks = new Bricks(length,width,height);
+        request.setAttribute("bricks", bricks);
         return user.getType() + "page";
     }
     
-    private List<Integer> makeList(HttpServletRequest request, HttpServletResponse response, int length, int width, int height) {
-        Bricks bricks = new Bricks(length,width,height);
-        List<Integer> noOfBricks = new ArrayList<>();
-        int fours = bricks.getTotalFours();
-        int twos = bricks.getTotalTwos();
-        int ones = bricks.getTotalOnes();
-        noOfBricks.add(fours); noOfBricks.add(twos); noOfBricks.add(ones);
-        
-        return noOfBricks;
-    }
+
     
 }

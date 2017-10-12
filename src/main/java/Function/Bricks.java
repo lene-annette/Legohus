@@ -12,10 +12,16 @@ import java.util.List;
  * @author lene_
  */
 public class Bricks {
+    private int length;
+    private int width;
+    private int height;
     private List<Integer> oneLayer;
     private List<Integer> total;
-    public Bricks(int length, int widht, int height){
-        this.oneLayer = BuildingBricks.simpleBuilder(length, widht);
+    public Bricks(int length, int width, int height){
+        this.length = length;
+        this.width = width;
+        this.height = height;
+        this.oneLayer = BuildingBricks.simpleBuilder(length, width);
         this.total = BuildingBricks.totalBricks(oneLayer, height);
     }
     
@@ -47,4 +53,14 @@ public class Bricks {
     public int getTotalOnes(){
         return total.get(2) + total.get(5);
     }
+    public int getLength() {
+        return length;
+    }
+    public int getWidth() {
+        return width;
+    }
+    public int getHeight() {
+        return height;
+    }
+    
 }

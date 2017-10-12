@@ -4,8 +4,7 @@
     Author     : lene_
 --%>
 
-<%@page import="java.lang.Integer"%>
-<%@page import="java.util.List"%>
+<%@page import="Function.Bricks"%>
 <%@page import="Function.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,7 +19,7 @@
         
         <div>
             <form name="placeOrder" action="FrontController" method="POST">
-                <h2>Please enter data to calculate a bill</h2><br>
+                <h2>Please enter data to order</h2><br>
                 <input type="hidden" name="command" value="placeOrder">
                 Length of house in dots:<br>
                 <input type="text" name="length" value="0">
@@ -31,19 +30,49 @@
                 Height in bricks:<br>
                 <input type="text" name="height" value="0">
                 <br>
-                <input type="submit" value="Calculate">
+                <input type="submit" value="Order"><br>
                 
             </form>
         </div>
         <div>
-            <% List<Integer> bricks = (List<Integer>)request.getAttribute("bricks");
-                if(bricks != null){ 
-                    int fours = bricks.get(0);
-                    int twos = bricks.get(1);
-                    int ones = bricks.get(2); %>
-                    <p>No of 4x2: <%=fours %></p>
-                    <p>No of 2x2: <%=twos %></p>
-                    <p>No of 1x2: <%=ones %></p>
+            <% Bricks bricks = (Bricks) request.getAttribute("bricks");
+                if(bricks != null){ %>
+                Entered data: <br>
+                Length: <%=bricks.getLength()%>, width: <%=bricks.getWidth()%>, height: <%=bricks.getHeight()%><br>
+                <table>
+                    <tr>
+                        <th>Type</th>
+                        <th>Side 1</th>
+                        <th>Side 2</th>
+                        <th>Side 3</th>
+                        <th>Side 4</th>
+                        <th>total * height</th>
+                    </tr>
+                    <tr>
+                        <th>4x2</th>
+                        <th><%=bricks.getLengthFours()%></th>
+                        <th><%=bricks.getWidthFours()%></th>
+                        <th><%=bricks.getLengthFours()%></th>
+                        <th><%=bricks.getWidthFours()%></th>
+                        <th><%=bricks.getTotalFours()%></th>
+                    </tr>
+                    <tr>
+                        <th>2x2</th>
+                        <th><%=bricks.getLengthTwos()%></th>
+                        <th><%=bricks.getWidthTwos()%></th>
+                        <th><%=bricks.getLengthTwos()%></th>
+                        <th><%=bricks.getWidthTwos()%></th>
+                        <th><%=bricks.getTotalTwos()%></th>
+                    </tr>
+                    <tr>
+                        <th>1x2</th>
+                         <th><%=bricks.getLengthOnes()%></th>
+                        <th><%=bricks.getWidthOnes()%></th>
+                        <th><%=bricks.getLengthOnes()%></th>
+                        <th><%=bricks.getWidthOnes()%></th>
+                        <th><%=bricks.getTotalOnes()%></th>
+                    </tr>
+                </table>
                <% }
             %>
             
