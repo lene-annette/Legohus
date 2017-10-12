@@ -5,6 +5,7 @@
  */
 package Function;
 
+import DBAccess.OrderMapper;
 import DBAccess.UserMapper;
 import java.util.List;
 
@@ -31,12 +32,21 @@ public class LegoMain {
           
           
         UserMapper um = new UserMapper();
+        OrderMapper om = new OrderMapper();
         try{
-            User user = um.login("lene@mail.dk","1234");
-            System.out.println(user);
+            
+            User user = um.login("john@gmail.com","password");
+//            List<Order> orders = om.getAllOrdersByUserId(3);
+              List<Order> orders = om.getAllOrders();
+            
+            for(Order order : orders){
+                System.out.println(order);
+            }
         }catch(LegohusException ex){
             System.out.println("message: " + ex.getMessage() );
         }
+
+        
     }
     
 }

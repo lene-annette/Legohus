@@ -27,8 +27,10 @@ create table  `orders`(
 
 insert into `users` (`email`,`u_name`,`password`,`u_type`) values ('lene@mail.dk','Lene S','1234','employee');
 insert into `users` (`email`,`u_name`,`password`,`u_type`) values ('john@gmail.com','John D','password','customer');
+insert into `orders` (`length`,`width`,`height`,`orderdate`,`u_id`) values (13,9,4,'2017-10-12',3);
 
 select * from `users`;
+select * from `orders`;
 
 select u_id, u_name, u_type from users where email='lene@mail.dk' and password='1234';
 
