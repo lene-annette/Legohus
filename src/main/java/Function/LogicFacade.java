@@ -36,4 +36,9 @@ public class LogicFacade {
         
     }
     
+    //firmakrav 1: ansat skal kunne se alle ordre i systemet
+    public static List<Order> getAllOrders() throws LegohusException{
+        return OrderMapper.getAllOrders();
+    }
+    
 }
