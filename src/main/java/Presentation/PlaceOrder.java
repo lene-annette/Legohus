@@ -5,10 +5,13 @@
  */
 package Presentation;
 
+import Function.Bricks;
 import Function.LegohusException;
 import Function.LogicFacade;
 import Function.Order;
 import Function.User;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -29,8 +32,20 @@ public class PlaceOrder extends Command {
         User user = (User)session.getAttribute("user");
         
         LogicFacade.createOrder(length, width, height, user.getId());
-        
+        List<Integer> noOfBricks = makeList(request,response,length,width,height);
+        request.setAttribute("bricks", noOfBricks);
         return user.getType() + "page";
+    }
+    
+    private List<Integer> makeList(HttpServletRequest request, HttpServletResponse response, int length, int width, int height) {
+        Bricks bricks = new Bricks(length,width,height);
+        List<Integer> noOfBricks = new ArrayList<>();
+        int fours = bricks.getTotalFours();
+        int twos = bricks.getTotalTwos();
+        int ones = bricks.getTotalOnes();
+        noOfBricks.add(fours); noOfBricks.add(twos); noOfBricks.add(ones);
+        
+        return noOfBricks;
     }
     
 }
