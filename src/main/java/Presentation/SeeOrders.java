@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author lene_
  */
-public class SeeOrdes extends Command {
+public class SeeOrders extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LegohusException {

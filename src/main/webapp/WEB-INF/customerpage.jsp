@@ -4,6 +4,8 @@
     Author     : lene_
 --%>
 
+<%@page import="Function.Order"%>
+<%@page import="java.util.List"%>
 <%@page import="Function.Bricks"%>
 <%@page import="Function.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -75,8 +77,22 @@
                 </table>
                <% }
             %>
-            
-            
+        </div>
+        <div>
+            <p>Click the bottom to see all your orders</p>
+            <form name="seeOrders" action="FrontController" method="POST">
+                <input type="hidden" name="command" value="seeOrders">
+                <input type="submit" value="See orders">
+            </form>
+        </div>
+        
+        <div>
+            <% List<Order> orders = (List<Order>) session.getAttribute("orders"); 
+                if(orders != null){
+                    for(Order order : orders){ %>
+                    <%=order%><br>
+                   <% }
+                }%>
         </div>
         
     </body>
