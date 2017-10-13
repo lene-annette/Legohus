@@ -41,6 +41,19 @@ public class OrderMapper {
         }
     }
     
+    public static void updateDispatchDate(String date, int oId) throws LegohusException{
+        try{
+           Connection con = DBConnector.connection(); 
+           String SQL = "UPDATE orders SET dispatchdate=? WHERE o_id=?";
+           PreparedStatement ps = con.prepareStatement(SQL);
+           ps.setString(1, date);
+           ps.setInt(2,oId);
+           ps.executeUpdate();
+        }catch(SQLException | ClassNotFoundException ex){
+            throw new LegohusException(ex.getMessage());
+        }
+    }
+    
     public static List<Order> getAllOrdersByUserId(int uId) throws LegohusException{
         try{
             List<Order> orders = new ArrayList<>();

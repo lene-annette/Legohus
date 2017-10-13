@@ -41,4 +41,9 @@ public class LogicFacade {
         return OrderMapper.getAllOrders();
     }
     
+    //Firmakrav 2: ansat skal kunne sætte afsendelsesdato
+    public static void updateDispatchDate(String date,int oId) throws LegohusException{
+        OrderMapper.updateDispatchDate(date, oId);
+    }
+    
 }

@@ -26,8 +26,9 @@
             </form>
         </div>
         <div>
-            <% List<Order> orders = (List<Order>) session.getAttribute("orders"); 
-                if(orders != null){%>
+            <% List<Order> orders = (List<Order>) session.getAttribute("orders");
+                if (orders != null) {%>
+            <form name="updateDispatch" action="FrontController" method="POST">
                 <table>
                     <tr>
                         <th>Order id</th>
@@ -38,7 +39,8 @@
                         <th>Order date</th>
                         <th>Shipped</th>
                     </tr>
-                    <% for(Order order : orders){ %>
+                    <% for (Order order : orders) {
+                            int orderId = order.getId();%>
                     <tr>
                         <th><%=order.getId()%></th>
                         <th><%=order.getUserId()%></th>
@@ -47,14 +49,30 @@
                         <th><%=order.getHeight()%></th>
                         <th><%=order.getOrderDate()%></th>
                         <th>
-                            <%if(order.getDispatchDate() != null){ %>
-                                <%=order.getDispatchDate()%>
-                           <% }%>
+                            <%if (order.getDispatchDate() != null) {%>
+                            <%=order.getDispatchDate()%>
+                            <% } %>
+<%--
+                            else {%>
+
+                            <input type="hidden" name="command" value="updateDispatch">
+                            <input type="hidden" name="orderId" value="<%=orderId%>">
+                            <input type="submit" value="Update Shippingdate">
                         </th>
+                        <th>
+                        </th>
+                        <% } %> --%>
+
                     </tr>
-                   <% }
-                }%>
+                    <% } %>
                 </table>
+                     <p>Enter id for the order where you want to update shippingdate</p>
+                     <input type="hidden" name="command" value="updateDispatch">
+                     <input type="text" name="orderId">
+                     <input type="submit" value="Update Shippingdate">
+                     <%   }%>
+                     
+            </form>
         </div>
 
     </body>
