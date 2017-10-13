@@ -34,3 +34,4 @@ select * from `orders`;
 
 select u_id, u_name, u_type from users where email='lene@mail.dk' and password='1234';
 
+update orders set dispatchdate='2017-10-13' where o_id=1;

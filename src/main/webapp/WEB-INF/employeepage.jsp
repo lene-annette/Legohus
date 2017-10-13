@@ -27,11 +27,34 @@
         </div>
         <div>
             <% List<Order> orders = (List<Order>) session.getAttribute("orders"); 
-                if(orders != null){
-                    for(Order order : orders){ %>
-                    <%=order%><br>
+                if(orders != null){%>
+                <table>
+                    <tr>
+                        <th>Order id</th>
+                        <th>Customer id</th>
+                        <th>House length</th>
+                        <th>House width</th>
+                        <th>House height</th>
+                        <th>Order date</th>
+                        <th>Shipped</th>
+                    </tr>
+                    <% for(Order order : orders){ %>
+                    <tr>
+                        <th><%=order.getId()%></th>
+                        <th><%=order.getUserId()%></th>
+                        <th><%=order.getLength()%></th>
+                        <th><%=order.getWidth()%></th>
+                        <th><%=order.getHeight()%></th>
+                        <th><%=order.getOrderDate()%></th>
+                        <th>
+                            <%if(order.getDispatchDate() != null){ %>
+                                <%=order.getDispatchDate()%>
+                           <% }%>
+                        </th>
+                    </tr>
                    <% }
                 }%>
+                </table>
         </div>
 
     </body>
