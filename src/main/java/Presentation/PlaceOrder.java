@@ -33,7 +33,7 @@ public class PlaceOrder extends Command {
         
         LogicFacade.createOrder(length, width, height, user.getId());
         Bricks bricks = new Bricks(length,width,height);
-        request.setAttribute("bricks", bricks);
+        request.setAttribute("bricks1", bricks);
         return user.getType() + "page";
     }
     

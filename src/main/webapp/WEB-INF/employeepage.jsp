@@ -28,51 +28,58 @@
         <div>
             <% List<Order> orders = (List<Order>) session.getAttribute("orders");
                 if (orders != null) {%>
-            <form name="updateDispatch" action="FrontController" method="POST">
-                <table>
-                    <tr>
-                        <th>Order id</th>
-                        <th>Customer id</th>
-                        <th>House length</th>
-                        <th>House width</th>
-                        <th>House height</th>
-                        <th>Order date</th>
-                        <th>Shipped</th>
-                    </tr>
-                    <% for (Order order : orders) {
+
+            <table>
+                <tr>
+                    <th>Order id</th>
+                    <th>Customer id</th>
+                    <th>House length</th>
+                    <th>House width</th>
+                    <th>House height</th>
+                    <th>Order date</th>
+                    <th>Shipped</th>
+                </tr>
+                <% for (Order order : orders) {
                             int orderId = order.getId();%>
-                    <tr>
-                        <th><%=order.getId()%></th>
-                        <th><%=order.getUserId()%></th>
-                        <th><%=order.getLength()%></th>
-                        <th><%=order.getWidth()%></th>
-                        <th><%=order.getHeight()%></th>
-                        <th><%=order.getOrderDate()%></th>
+                <tr>
+                    <th><%=order.getId()%></th>
+                    <th><%=order.getUserId()%></th>
+                    <th><%=order.getLength()%></th>
+                    <th><%=order.getWidth()%></th>
+                    <th><%=order.getHeight()%></th>
+                    <th><%=order.getOrderDate()%></th>
+                    
+                        <%if (order.getDispatchDate() != null) {%>
                         <th>
-                            <%if (order.getDispatchDate() != null) {%>
-                            <%=order.getDispatchDate()%>
-                            <% } %>
-<%--
-                            else {%>
-
+                        <%=order.getDispatchDate()%>
+                        </th>
+                        <% } else {%>
+                        <form name="updateDispatch" action="FrontController" method="POST">
                             <input type="hidden" name="command" value="updateDispatch">
-                            <input type="hidden" name="orderId" value="<%=orderId%>">
+                            <input type="hidden" name="orderId" value="<%=order.getId()%>">
+                            <th>
+                            <input type="text" name="dDate" >
+                            </th>
+                            <th>
                             <input type="submit" value="Update Shippingdate">
-                        </th>
-                        <th>
-                        </th>
-                        <% } %> --%>
+                            </th>
+                        </form>
+                    
 
-                    </tr>
-                    <% } %>
-                </table>
-                     <p>Enter id for the order where you want to update shippingdate</p>
-                     <input type="hidden" name="command" value="updateDispatch">
-                     <input type="text" name="orderId">
-                     <input type="submit" value="Update Shippingdate">
-                     <%   }%>
-                     
-            </form>
+                    <% } %> 
+
+                </tr>
+                <% } %>
+            </table>
+            <%--
+                 <p>Enter id for the order where you want to update shippingdate</p>
+                 <input type="hidden" name="command" value="updateDispatch">
+                 <input type="text" name="orderId">
+                 <input type="submit" value="Update Shippingdate">
+                 <%    --%>
+
+
+            <% }%>
         </div>
 
     </body>

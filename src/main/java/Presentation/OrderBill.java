@@ -5,32 +5,27 @@
  */
 package Presentation;
 
+import Function.Bricks;
 import Function.LegohusException;
 import Function.LogicFacade;
+import Function.Order;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author lene_
  */
-public class UpdateDispatch extends Command {
+public class OrderBill extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LegohusException {
-        int OId = Integer.parseInt(request.getParameter("orderId"));
-        String date = request.getParameter("dDate");
-        
-        HttpSession session = request.getSession();
-        String update = "The shippingdate has been updated";
-        session.setAttribute("updateMessage",update);
-        
-        LogicFacade.updateDispatchDate(date, OId);
-        
-        return "employeepage";
+        int orderId = Integer.parseInt(request.getParameter("orderId"));
+        Order order = LogicFacade.getOrderById(orderId);
+        Bricks bricks = new Bricks(order.getLength(),order.getWidth(),order.getHeight());
+        request.setAttribute("bricks2",bricks);
+        return "customerpage";
     }
 
-    
     
 }

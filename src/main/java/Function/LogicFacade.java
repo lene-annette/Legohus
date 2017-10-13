@@ -46,4 +46,8 @@ public class LogicFacade {
         OrderMapper.updateDispatchDate(date, oId);
     }
     
+    public static Order getOrderById(int id) throws LegohusException{
+        return OrderMapper.getOrder(id);
+    }
+    
 }
