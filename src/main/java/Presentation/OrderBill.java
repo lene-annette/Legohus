@@ -23,7 +23,7 @@ public class OrderBill extends Command {
         int orderId = Integer.parseInt(request.getParameter("orderId"));
         Order order = LogicFacade.getOrderById(orderId);
         Bricks bricks = new Bricks(order.getLength(),order.getWidth(),order.getHeight());
-        request.setAttribute("bricks2",bricks);
+        request.setAttribute("bricks",bricks);
         return "customerpage";
     }
 

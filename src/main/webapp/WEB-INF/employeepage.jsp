@@ -81,6 +81,6 @@
 
             <% }%>
         </div>
-
+        <a href="index.jsp">home</a>
     </body>
 </html>

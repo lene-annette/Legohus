@@ -37,7 +37,7 @@
             </form>
         </div>
         <div>
-            <% Bricks bricks1 = (Bricks) request.getAttribute("bricks1");
+            <% Bricks bricks1 = (Bricks) request.getAttribute("bricks");
                 if (bricks1 != null) {%>
             Entered data: <br>
             Length: <%=bricks1.getLength()%>, width: <%=bricks1.getWidth()%>, height: <%=bricks1.getHeight()%><br>
@@ -89,42 +89,43 @@
         <div>
             <% List<Order> orders = (List<Order>) session.getAttribute("orders");
                 if (orders != null) {%>
-            
-                <table>
-                    <tr>
-                        <th>Order id</th>
-                        <th>House length</th>
-                        <th>House width</th>
-                        <th>House height</th>
-                        <th>Order date</th>
-                        <th>Shipped</th>
-                    </tr>
-                    <% for (Order order : orders) {%>
-                    <tr>
-                        <th><%=order.getId()%></th>
-                        <th><%=order.getLength()%></th>
-                        <th><%=order.getWidth()%></th>
-                        <th><%=order.getHeight()%></th>
-                        <th><%=order.getOrderDate()%></th>
-                        <th>
-                            <%if (order.getDispatchDate() != null) {%>
-                            <%=order.getDispatchDate()%>
-                            <% }%>
-                        </th>
-                        <th>
-                            <form name="getBill" action="FrontServlet" method="POST">
+
+            <table>
+                <tr>
+                    <th>Order id</th>
+                    <th>House length</th>
+                    <th>House width</th>
+                    <th>House height</th>
+                    <th>Order date</th>
+                    <th>Shipped</th>
+                </tr>
+                <% for (Order order : orders) {%>
+                <tr>
+                    <th><%=order.getId()%></th>
+                    <th><%=order.getLength()%></th>
+                    <th><%=order.getWidth()%></th>
+                    <th><%=order.getHeight()%></th>
+                    <th><%=order.getOrderDate()%></th>
+                    <th>
+                        <%if (order.getDispatchDate() != null) {%>
+                        <%=order.getDispatchDate()%>
+                        <% }%>
+                    </th>
+                    <th>
+                        <form name="getBill" action="FrontController" method="POST">
                             <input type="hidden" name="command" value="getBill">
                             <input type="hidden" name="orderId" value="<%=order.getId()%>">
                             <input type="submit" value="Get bill">
-                            </form>
-                        </th>
-                    </tr>
-                    <% } %>
-                </table>
-            
-            <%   } %>
+                        </form>
+                    </th>
+                </tr>
+                <% } %>
+            </table>
+
+            <%   }%>
         </div>
         <div>
+            <%--
             <% Bricks bricks2 = (Bricks) request.getAttribute("bricks2");
                 if (bricks2 != null) {%>
             Entered data: <br>
@@ -165,7 +166,8 @@
             </table>
             <% }
             %>
+            --%>
         </div>
-
+        <a href="index.jsp">home</a>
     </body>
 </html>
