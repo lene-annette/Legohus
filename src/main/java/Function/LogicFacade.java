@@ -7,6 +7,8 @@ package Function;
 
 import DBAccess.OrderMapper;
 import DBAccess.UserMapper;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,7 +33,11 @@ public class LogicFacade {
     }
     
     public static void createOrder(int length, int width, int height, int userId) throws LegohusException{
-        Order order = new Order(length, width, height, "2017-10-12", userId);
+        Date date = new Date();
+        
+        SimpleDateFormat sdrf = new SimpleDateFormat("yyyy-MM-dd");
+        String dateString = sdrf.format(date);
+        Order order = new Order(length, width, height, dateString, userId);
         OrderMapper.createOrder(order);
         
     }
